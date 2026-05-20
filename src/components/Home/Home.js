@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import ProductCard from '../Product/ProductCard';
 import { productData, filterProducts } from '../../data/productData';
 import { useApp } from '../../contexts/AppContext';

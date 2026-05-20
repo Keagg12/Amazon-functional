@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { useApp } from '../../contexts/AppContext';
 function Cart() {

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { getItemsFromProduct } from '../../data/productData';
 function GridItem({ item, onAdd }) {
@@ -12,6 +12,14 @@ function ProductCard({ product }) {
   const renderKitchenGrid = () => (<div className="imoge"><div className="upimg2"><GridItem item={product.topItem} onAdd={addFromItem} /></div><div className="downimg2">{product.bottomRow.map((item) => <GridItem key={item.wrapperClass} item={item} onAdd={addFromItem} />)}</div></div>);
   const renderSingle = () => (<div className="imoge2" onClick={() => addItem(getItemsFromProduct(product)[0])} role="button" tabIndex={0}>{product.useOffiWrapper ? <div className="offi"><img src={product.src} alt={product.title} /></div> : <img src={product.src} alt={product.title} />}</div>);
   const content = product.layout === 'quad-grid' ? renderQuadGrid() : product.layout === 'kitchen-grid' ? renderKitchenGrid() : product.layout === 'single' ? renderSingle() : null;
-  return (<div className="boxrest"><h2>{product.title}</h2>{content}<a href="#add" className="see-more" onClick={addAll}>{product.seeMoreText}</a></div>);
+  return (
+    <div className="boxrest">
+      <h2>{product.title}</h2>
+      {content}
+      <button type="button" className="see-more" onClick={addAll}>
+        {product.seeMoreText}
+      </button>
+    </div>
+  );
 }
 export default ProductCard;
