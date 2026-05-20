@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+﻿import React from 'react';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
+import { CartProvider } from './contexts/CartContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { AppProvider, useApp } from './contexts/AppContext';
+import './assets/styles/style.css';
+function AppContent() {
+  const { page } = useApp();
+  return (<><Header />{page === 'cart' ? <Cart /> : <Home />}<Footer /></>);
 }
-
+function App() {
+  return (<AuthProvider><CartProvider><AppProvider><AppContent /></AppProvider></CartProvider></AuthProvider>);
+}
 export default App;
